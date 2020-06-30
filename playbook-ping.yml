@@ -1,6 +1,6 @@
 ---
 - name: Trying to ping
-  hosts: [debian_group]
+  hosts: [debian_group, centos_group]
 
   tasks:
   - name: Ping all hosts

@@ -1,0 +1,47 @@
+---
+- name: installation sur les machines Debians
+  hosts: debian_group
+
+  tasks:
+  - name: install apache2 on Debian
+    apt:
+      update_cache: yes
+      name: apache2
+      state: latest
+
+- name: ensure service is started
+  hosts: debian_group
+  
+  tasks:
+  - name: ensure that apache is running
+    service:
+      name: apache2
+      state: started
+
+- name: installation sur les machines CentOS
+  hosts: centos_group
+
+  tasks:
+  - name: httpd installation on CentOs
+    yum:
+      name: httpd
+      state: latest
+
+- name: ensure that httpd is running
+  hosts: centos_group
+ 
+  tasks:
+  - name: ensure service is started
+    service: 
+      name: httpd
+      state: started
+
+- name: copy file on both clients
+  hosts: [debian_group, centos_group]
+
+  tasks:
+  - name: copy file
+    copy:
+     src: index.html
+     dest: /var/www/html/
+
