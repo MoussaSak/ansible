@@ -1,0 +1,8 @@
+---
+- name: Trying to ping
+  hosts: [debian_group]
+
+  tasks:
+  - name: Ping all hosts
+    ping:
+      data:
