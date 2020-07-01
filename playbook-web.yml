@@ -35,6 +35,14 @@
     service: 
       name: httpd
       state: started
+      enabled: yes
+
+  - name: Désactivation du firewalld
+    firewalld:
+      permanent: yes
+      service: http
+      immediate: yes
+      state: enabled
 
 - name: copy file on both clients
   hosts: [debian_group, centos_group]

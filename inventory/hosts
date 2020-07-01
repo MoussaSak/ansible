@@ -1,5 +1,7 @@
 [debian_group]
-debian    ansible_host=192.168.59.152
+debian
 
 [centos_group]
-centos    ansible_host=192.168.59.145
+centos
+
+

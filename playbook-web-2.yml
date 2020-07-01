@@ -1,0 +1,19 @@
+---
+- name : mise en oeuvre d'un site web
+  hosts: debian
+
+  tasks:
+  - name: Installation du serveur apache
+    package:
+      name: "{{apache_package_name}}"
+      state: present
+
+- name: mise en ouevre d'un site web 
+  hosts: centos
+  
+  tasks:
+  - name: Activation et démmarage de apache
+    systemd:
+      name: "{{apache_package_name}}"
+      state: started
+      enabled: yes
